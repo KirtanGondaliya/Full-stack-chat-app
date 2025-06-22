@@ -9,7 +9,6 @@ import { connectDB } from "./lib/db.connection.js";
 import { app, server } from "./lib/socketIO.js";
 
 dotenv.config();
-
 const PORT = process.env.PORT || 5001;
 const __dirname = path.resolve();
 
