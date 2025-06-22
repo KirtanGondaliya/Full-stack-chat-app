@@ -1,12 +1,12 @@
-import express from "express";
 import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
 import cors from "cors";
-import authRoutes from "./routes/auth.router.js";
-import messageRoutes from "./routes/messages.router.js";
+import path from "path";
+import express from "express";
+import authRouter from "./routes/auth.router.js";
+import messageRouter from "./routes/messages.router.js";
 import { connectDB } from "./lib/db.connection.js";
 import { app, server } from "./lib/socketIO.js";
-import path from "path";
 
 dotenv.config();
 
@@ -25,8 +25,8 @@ app.use(
   })
 );
 
-app.use("/api/auth", authRoutes);
-app.use("/api/messages", messageRoutes);
+app.use("/api/auth", authRouter);
+app.use("/api/messages", messageRouter);
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "../frontend/dist")));
